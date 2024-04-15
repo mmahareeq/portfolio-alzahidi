@@ -1,0 +1,50 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p class="mark-required"><%=  t('global.post.required_fields_message')%></p>
+  <div class="field mb-2">
+    <%= form.label :title_ar ,class: "form-label" %>
+    <span class="mark-required"> * </span>
+    <%= form.text_field :title_ar , class: "form-control"%>
+  </div>
+  <div class="field mb-2">
+    <%= form.label :title_en,class: "form-label" %>
+    <%= form.text_field :title_en , class: "form-control"%>
+  </div>
+  <div class="field mb-2">
+    <%= form.label :content_ar, class: "form-label" %>
+    <span class="mark-required"> * </span>
+    <%= form.rich_text_area :content_ar, class: "form-control" %>
+  </div>
+  <%= form.hidden_field :post_type, value: @post_type %>
+
+  <div class="field mb-2">
+    <%= form.label :content_en, class: "form-label" %>
+    <%= form.rich_text_area :content_en, class: "form-control" %>
+  </div>
+  <%if @post.persisted? %>
+    <%= image_tag @post.image, alt: "Example Image", class: "img-fluid", style: "width: 300px; height: 300px;"%>
+  <% end %>
+  <div class="field mb-2">
+      <%= form.label :image, class: "form-label" %>
+      <span class="mark-required"> * </span>
+      <%= form.file_field :image, class: "form-control" %>
+  </div>
+  <div>
+  <% if @post.persisted? %>
+    <%= form.submit t('global.post.edit_post'), class: "btn btn-primary btn-sm" %>
+  <% else %>
+    <%= form.submit t('global.post.create_post'), class: "btn btn-primary btn-sm" %>
+  <% end %>
+    
+  </div>
+<% end %>

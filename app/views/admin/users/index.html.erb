@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <% if notice %>
+    <div class="notice alert alert-success mt-2 lert-dismissible fade show d-flex justify-content-between" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <h1 class="mb-2"> <%= t("global.admin.users.all_users") %></h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t("global.admin.users.name") %></th>
+        <th><%= t("global.admin.users.email") %></th>
+        <th><%= t("global.admin.users.authority") %></th>
+        <th><%= t("global.admin.users.change_authority") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %>
+          <td><%= user.email %></td>
+          <td><%= user.authority %></td>
+          <td>
+            <div class="d-flex  ">
+              <%= button_to 'admin', change_authority_admin_user_path(id: user.id, authority: "admin"), method: "patch" , class: "btn btn-primary btn-sm m-2"%>  
+              <%= button_to 'staff', change_authority_admin_user_path(id: user.id, authority: "staff"), method: "patch" , class: "btn btn-primary btn-sm m-2"%>  
+              <%= button_to 'visitor', change_authority_admin_user_path(id: user.id, authority: "visitor"), method: "patch" , class: "btn btn-primary btn-sm m-2"%>  
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

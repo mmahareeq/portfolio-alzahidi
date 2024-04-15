@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+  @import './actiontext.css';
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+  
+  
+ :root{
+    --primary-color: #0c407c;
+    --secondary-color: #e09936;
+  }
+  body {
+    font-family: "Cairo", sans-serif;
+  }
+  
+  .header{
+    font-weight: 500;
+  }
+  
+  .site-logo{
+    height: 80px;
+    width: 120px;
+  }
+  .custom-height{
+      height: max-content;
+      width: fit-content;
+  }
+  
+  .limit-text-height {
+      height: 6rem; /* Approximate height for 150 words */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+  .mark-required{
+    color: rgb(150, 15, 15);
+  }
+  
+  .main-content {
+    min-height: calc(100vh - 10rem);
+  }
+  
+  .bannar{
+    background-image: url(istockphoto-987365514-2048x2048.jpg);
+    height: 600px;
+    color: white;
+    max-width: none;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .mt-7{
+    margin-top: 7rem;
+  }
+  
+  .bg-primary{
+    background-color: var(--primary-color);
+  }
+  
+  .text-color{
+    color: var(--secondary-color);
+  }
+  
+  .footer{
+   
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  
+  .icon{
+    font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+  }
+  
+  .service-four-number {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 700;
+    padding-right: 30px;
+    border-right: 1px solid rgb(185, 181, 181);
+    margin-right: 30px;
+    color: rgb(185, 181, 181);
+   
+  }
+  
+  .btn-primary{
+    background-color: var(--secondary-color);
+    border: none;
+  }
+  .btn-primary:hover{
+    background-color: white;
+    color: #000000;
+    border: 1px solid var(--secondary-color);
+  } 
+  .post-content{
+    color: #808080;
+  }
+  
+  .btn-outline-dark {
+    border-color: var(--secondary-color);
+  }
+  .btn-outline-dark:hover{
+    background-color: var(--secondary-color);
+    border:none;
+  } 
+  
+  .card:hover {
+    transform: scale(1.01); /* Increase size by 5% on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a bit more shadow */
+  }
+  
+  .nav-item a:active {
+    /* Your custom styles for active nav-item */
+    background-color: #007bff;
+    color: #fff;
+  }

@@ -1,0 +1,54 @@
+
+<% if notice %>
+  <div class="notice alert alert-success mt-2 lert-dismissible fade show d-flex justify-content-between" role="alert">
+  <%= notice %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+
+
+<% if !!@post_type %>
+  <div class="container">
+      <div class=" d-flex align-items-center flex-column mb-4">
+      
+      <h1 class="fs-2"> <%= @post_type? t("global.navbar.#@post_type") : t("global.navbar.home") %></h1>
+      <p class="fs-6"> <%= @post_type ? t("global.navbar.home")+" < " +  t("global.navbar.#@post_type") : nil  %></p>
+    
+      <% if user_signed_in? && (current_user.authority == "admin" || current_user.authority == "staff" )%>
+        <%= link_to t('global.post.create_post'), new_post_path(post_type: @post_type), method: "get", class: ""%>
+      <% end %>
+
+    </div>
+    <div >
+      <% if @posts.empty? %>
+          <p class="text-center fs-4"> <%= t("global.post.no_#{@post_type}")  %> </p>
+      <% else %>
+          <% if @post_type == "contact_us" || @post_type == "about_us" %>
+            <div class="d-flex justify-content-center">
+              <%= render @posts[@posts.length() -1] %>
+            </div>
+          <% else %> 
+            <div id="posts" class="d-flex align-items-stretch">
+              <% @posts.each do |post| %>
+                <%= link_to post_path(post) , class: "col-3 me-2 text-decoration-none" do %>
+                  <%= render post %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+      
+  
+  
+  </div>
+  
+<% else %> 
+<%= render partial: "home" %>
+
+ 
+
+
+<% end %> 
+
+

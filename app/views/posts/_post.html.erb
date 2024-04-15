@@ -1,0 +1,25 @@
+
+<div class="card post-card  border"  id="<%= dom_id post %>">    
+    <% if post && post.image.attached? %>
+      <%= image_tag post.image , alt: "cover_post", style: "width: 100%; height: 250px;", class: "object-fit-cover"%>
+    <% end %>   
+    
+    <div class="card-body p-2 h-100">
+    <div class="d-flex ">
+      <% if I18n.locale == :en %>
+        <h2 class="card-title fs-4"> <%= post.title_en.present? ? post.title_en : post.title_ar%></h2>
+      <% else %>
+        <h2 class="card-title fs-4"> <%= post.title_ar%></h2>
+      <% end %>
+    </div>
+    <div class="">
+      <% if I18n.locale == :en %>
+        <p class="card-text post-content"><%= @post_type == "contact_us" || @post_type == "about_us" ? post.content_en.present? ? post.content_en: post.content_ar :  truncate(post.content_en.present? ? post.content_en.to_plain_text: post.content_ar.to_plain_text, length: 100) %></p>
+      <% else %>
+         <p class="card-text post-content"><%= @post_type == "contact_us" || @post_type == "about_us" ? post.content_ar : truncate(post.content_ar.to_plain_text, length: 100) %></p>
+      <% end %> 
+    
+    </div>
+   
+  </div>
+  </div>

@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light header container">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><%= image_tag "logo.png", alt: "" , class: "site-logo"%></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to t('global.navbar.home'), posts_path, class: "nav-link active " %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('global.navbar.products'), posts_path(post_type: "products"), class: "nav-link active " %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('global.navbar.projects'), posts_path(post_type: "projects"), class: "nav-link active " %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('global.navbar.services'), posts_path(post_type: "services"), class: "nav-link active " %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('global.navbar.contact_us'), posts_path(post_type: "contact_us"), class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+          <%= link_to t('global.navbar.about_us'), posts_path(post_type: "about_us"), class: "nav-link active " %>
+  
+          </li>
+          <% if user_signed_in? && current_user.authority == "admin" %>
+          <li class="nav-item">
+          <%= link_to t('global.navbar.users'), admin_users_path, class: "nav-link active" %>
+  
+          </li>
+          <% end %>
+        
+          
+            <% I18n.available_locales.each do |locale| %>
+              <li class="nav-link active">
+                <% if I18n.locale == locale %>
+                  <%= t(locale, scope: 'global.navbar') %> 
+                <% else %>
+                  <%= link_to t(locale, scope: 'global.navbar'), url_for(locale: locale, params: request.query_parameters) %>
+                <% end %>
+              </li>
+            <% end %>
+        
+        </ul>
+      </div>
+      <div>
+      <% if user_signed_in? %>
+        <%= button_to t('global.navbar.log_out'), destroy_user_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
+      <% else %> 
+      <%= link_to t('global.navbar.log_in'), new_user_session_path , class:"btn btn-outline-dark btn-sm"%>
+      <%= link_to t('global.navbar.sign_up'), new_user_registration_path , class:"btn btn-dark btn-sm"%>
+      <% end %>
+    </div>
+    </div>
+  </nav>
+</header>

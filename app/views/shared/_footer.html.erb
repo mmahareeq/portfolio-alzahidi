@@ -1,0 +1,53 @@
+
+<footer class="mt-2 bg-primary footer">
+ 
+  <div class="d-flex flex-column">
+      <div class="row mt-3">
+        <div class="col-4">
+          <h5 class="text-color"> <%= t("global.navbar.about_us") %></h5>
+          <p>An IT consultancy can help you assess your technology needs and develop a technology strategy.</p>
+        </div>
+        <div class="col-4">
+        <h5 class="text-color"> Links</h5>
+          <ul class="list-unstyled">
+          <li>
+            <%= link_to t('global.navbar.products'), posts_path(post_type: "products"), class: "nav-link active " %>
+          </li>
+          <li>
+            <%= link_to t('global.navbar.projects'), posts_path(post_type: "projects"), class: "nav-link active " %>
+          </li>
+          <li>
+            <%= link_to t('global.navbar.services'), posts_path(post_type: "services"), class: "nav-link active " %>
+          </li>
+          <li> 
+            <%= link_to t('global.navbar.contact_us'), posts_path(post_type: "contact_us"), class: "nav-link active" %>
+          </li>
+          </ul>
+        </div>
+        <div class="col-4 ">
+        
+          <h5 class="text-color"> <%= t("global.home.our_services") %></h5>
+        
+        <div class="d-flex">
+            <% if @services_posts %>
+              <% @services_posts.each do |post| %>
+                <%= link_to post_path(post) , class: "text-decoration-none p-0 m-0 pe-1" do %>
+                  <div class=""  id="<%= dom_id post %>">    
+                    <% if post && post.image.attached? %>
+                      <%= image_tag post.image , alt: "cover_post", style: "width: 100px; height: 100px;", class: "object-fit-cover"%>
+                    <% end %>   
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+        
+          
+        </div>
+        </div>
+    </div>
+    
+    <div class="row text-center">
+      <p class="p-0 m-0">© 2024. All Rights Reserved. Design by </p>
+    </div>
+  </div>
+</footer>
