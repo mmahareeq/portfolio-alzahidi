@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
     def set_locale
       I18n.locale = extract_locale_from_tld  || I18n.default_locale
       direction = (I18n.locale == :ar) ? "rtl" : "ltr"
-      puts I18n.locale
-      puts direction
     end
     
     def extract_locale_from_tld
@@ -18,7 +16,6 @@ class ApplicationController < ActionController::Base
       I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale.to_sym : nil
     end
   
-
     rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden }
@@ -26,10 +23,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
-
     def set_tags
        set_meta_tags site: t('global.site.title'),
-                     description: t('global.site.description'),
-                     icon: "/logo.png"
+                     description: t('global.site.description')
     end  
 end

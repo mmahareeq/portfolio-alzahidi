@@ -76,6 +76,7 @@ ar:
       change_post_status_success: "تم تغيير حالة منشور بنجاح"
       change_post_status_failed: "فشل في تحديث حالة المنشور"
       post_updated_success: "تم تحديث المنشور بنجاح"
+      post_created_successfully: "   تم انشاء المشنور بنجاح"
       created_at: "تاريخ الانشاء"
       created_by: "تم انشاؤه من قبل"
     admin:

@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-     before_action :authenticate_admin!
+    load_and_authorize_resource
 
     def index 
       @users = User.all
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
         
     end
     def authenticate_admin!
-        unless current_user.authority == "admin"
+        unless (!user_signed_in? || (user_signed_in? && current_user.authority == 'admin'))
             redirect_to root_path, alert: 'Access Denied'
         end 
     end

@@ -72,6 +72,7 @@ en:
       change_post_status_success: "Post status changed successfully."
       change_post_status_failed: "Failed to change post status."
       post_updated_success: "Post was successfully updated."
+      post_created_successfully: "Post was successfully created."
       created_at: " Created at"
       created_by: " Created by"
     admin:

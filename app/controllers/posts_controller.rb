@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :home
-  before_action :authenticate_user!, except: [ :index, :show]
+  # before_action :authenticate_user!, except: [ :index, :show]
   load_and_authorize_resource
 
   PUBLISHED = "published"
@@ -32,6 +32,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show 
     set_meta_tags title: @post.title_ar
+                  
   end
 
   # GET /posts/new
@@ -54,7 +55,7 @@ class PostsController < ApplicationController
     @post.status = UNPUBLISHED
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(id: @post.id), notice: "Post was successfully created." }
+        format.html { redirect_to post_url(id: @post.id), notice: I18n.t("global.post.post_created_successfully")}
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }

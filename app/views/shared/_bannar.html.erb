@@ -6,7 +6,7 @@
         <span ><%= t("global.home.welcome_to_our_company") %></span>
         <h1><%= t("global.home.technology_provider") %></h1>
         <p> <%= t("global.home.goals_company")  %></p>
-        <%= link_to t("global.home.discover"), posts_path, method: "get", class:"btn btn-primary custom-height"%>
+        <%= link_to t("global.home.discover"), posts_path(post_type: "services"), method: "get", class:"btn btn-primary custom-height"%>
     
     </div>
    

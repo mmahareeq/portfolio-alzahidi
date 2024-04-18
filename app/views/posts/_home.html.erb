@@ -32,7 +32,6 @@
         <div></div>
       </div>
     </div>
-    
   </div>
   <% if !@services_posts.empty? %>
     <div class="row mt-7">
@@ -40,7 +39,7 @@
         <span class="text-color"><%= t("global.home.our_services") %> </span>
         <h3><%= t("global.home.our_best_services") %></h3>
         <p><%= t("global.home.service_provider") %></p>
-        <%= link_to t("global.home.learn_more"), posts_path, method: "get", class:"btn btn-primary custom-height "%>
+        <%= link_to t("global.home.learn_more"), url_for(controller: 'posts', action: 'index', post_type: "services") , method: "get", class:"btn btn-primary custom-height "%>
       </div>
       <div class="col-9">
         <div class="row">
