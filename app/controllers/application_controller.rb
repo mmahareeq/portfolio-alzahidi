@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    before_action :set_locale  
+    before_action :set_locale, :set_tags
    
     def default_url_options
       { locale: I18n.locale }
@@ -25,4 +25,11 @@ class ApplicationController < ActionController::Base
         format.html { redirect_to root_path, alert: exception.message }
       end
     end
+
+
+    def set_tags
+       set_meta_tags site: t('global.site.title'),
+                     description: t('global.site.description'),
+                     icon: "/logo.png"
+    end  
 end

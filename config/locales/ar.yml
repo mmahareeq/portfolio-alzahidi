@@ -11,6 +11,9 @@ ar:
         published: "تم نشرها"
         image: "صورة"
   global:
+    site: 
+      title: "الزاهدي للبرمجيات و تكنولوجيا المعلومات"
+      description: "الشركة الزاهدي للبرمجيات والتكنولوجيا المعلومات توفر خدمات لتطوير البرامج ,استشارات برمجية و تطبيقات مفتوحة المصدر"
     navbar:
       alzahidi_company: "الزاهدي تك "
       home: "الصفحة الرئيسية"
@@ -61,7 +64,7 @@ ar:
       projects: "مشروع"
       delete: "حذف"
       published: "منشور"
-      publish_this_post: "نشر"
+      publish_this_post: "انشر"
       unpublished: "غير منشور"
       unpublish_this_post: "الغاء نشرٍ"
       create_post: "انشاء منشور جديد"

@@ -18,6 +18,7 @@ class PostsController < ApplicationController
       else
         @posts = Post.where(post_type: @post_type)
       end
+      set_meta_tags title: t("global.navbar.#{@post_type}")
     end
   end
   
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show 
+    set_meta_tags title: @post.title_ar
   end
 
   # GET /posts/new

@@ -51,7 +51,7 @@
         <%= button_to t('global.navbar.log_out'), destroy_user_session_path, method: :delete, class:"btn btn-outline-dark btn-sm"%>
       <% else %> 
       <%= link_to t('global.navbar.log_in'), new_user_session_path , class:"btn btn-outline-dark btn-sm"%>
-      <%= link_to t('global.navbar.sign_up'), new_user_registration_path , class:"btn btn-dark btn-sm"%>
+      <%= link_to t('global.navbar.sign_up'), new_user_registration_path , class:"btn btn-primary btn-sm"%>
       <% end %>
     </div>
     </div>
