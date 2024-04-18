@@ -5,12 +5,15 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
   load_and_authorize_resource
 
+  PUBLISHED = "published"
+  UNPUBLISHED = "unpublished"
+
   # GET /posts or /posts.json
   def index
     @post_type= params[:post_type]
     if @post_type
-      if(!user_signed_in? || (user_signed_in? && current_user.authority != 'admin' && current_user.authority != 'staff'))
-        @posts = Post.where(post_type: @post_type, status: 'published')
+      if(!user_signed_in? || (user_signed_in? && current_user.authority == 'visitor'))
+        @posts = Post.where(post_type: @post_type, status: PUBLISHED)
         puts @posts
       else
         @posts = Post.where(post_type: @post_type)
@@ -20,9 +23,9 @@ class PostsController < ApplicationController
   
   # Get Home 
   def home
-    @products_posts = Post.where(post_type: "products", status: 'published').limit(3)
-    @services_posts = Post.where(post_type: "services" , status: 'published').limit(3)
-    @projects_posts = Post.where(post_type: "projects", status: 'published').limit(3)
+    @products_posts = Post.where(post_type: "products", status: PUBLISHED).limit(3)
+    @services_posts = Post.where(post_type: "services" , status: PUBLISHED).limit(3)
+    @projects_posts = Post.where(post_type: "projects", status: PUBLISHED).limit(3)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -46,7 +49,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
-    @post.status = "unpublished"
+    @post.status = UNPUBLISHED
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(id: @post.id), notice: "Post was successfully created." }
@@ -60,7 +63,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post.status = "unpublished"
+    @post.status = UNPUBLISHED
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to post_url(@post), notice: I18n.t("global.post.post_updated_success" )}

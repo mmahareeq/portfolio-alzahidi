@@ -1,31 +1,90 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
+  activerecord:
+    models:
+      post: "Post"
+    attributes:
+      post:
+        title_ar: " Title (AR)"
+        title_en: "Title(EN)"
+        content_ar: "Content(AR)"
+        content_en: "Content(EN)"
+        published: "Published "
+        image: "Image"
+  global:
+    navbar:
+      alzahidi_company: "ALZAHIDI TECH"
+      products: "Products"
+      services: "Services"
+      projects: "Projects"
+      contact_us: "Contact Us"
+      about_us: "About Us"
+      users: "Users"
+      ar: "Ar"
+      en: "En"
+      language: Language
+      log_out: "Logout"
+      log_in: "login"
+      sign_up: "signup"
+    home:
+      welcome_to_our_company: "Welcome to our company"
+      discover: "Discover"
+      technology_provider: "Technology Solution Provider"
+      goals_company: "The goal of IT services is to provide efficient and effective technology solutions that help businesses achieve their objectives."
+      team_members: "Team Members"
+      our_top_skilled_experts: "Our Top Skilled Experts"
+      our_services: "Our Services"
+      our_best_services: "Our Best Services"
+      service_provider: "IT service providers work closely with clients to understand their unique needs & develop customized technology solutions."
+      learn_more: "Learn more"
+      our_work_feature: "Our Work Feature"
+      quick_steps: "Quick Steps"
+      project_discussion: "Project Discussion"
+      project_discussion_desc: "They may offer a range of services, from project-based work to ongoing support and maintenance."
+      testing_trying: "Testing & Trying"
+      execute_install: "Excute & install"
+    post:
+      back_to_posts: "Back to posts"
+      edit: "Edit"
+      edit_products: "Edit Product"
+      new_products: "New Product"
+      edit_services: "Edit Service"
+      new_services: :"New Service"
+      edit_projects: "Edit Project"
+      new_projects: "New Project"
+      no_products: "There are no products"
+      no_services: "There are no services"
+      no_projects: "There are no projects"
+      new: "New"
+      delete: "Delete"
+      products: "Product"
+      services: "Service"
+      projects: "Project"
+      published: "Published"
+      publish_this_post: "Publish"
+      unpublished: "Unpublished"
+      unpublished_this_post: "Unpublish"
+      create_post: "Create new post"
+      editing: "Editing"
+      edit_post: "Edit the post"
+      show_this_post: "Show this post"
+      required_fields_message: "* indicate fields are required"
+      post_destroy_message: "Post was successfully destroyed."
+      change_post_status_success: "Post status changed successfully."
+      change_post_status_failed: "Failed to change post status."
+      post_updated_success: "Post was successfully updated."
+      created_at: " Created at"
+      created_by: " Created by"
+    admin:
+      users: 
+        all_users: "All users"
+        email: "Email"
+        name: "Name"
+        authority: "Authority"
+        change_authority: "Change Authority"
+        admin: "Admin"
+        staff: "Staff"
+        visitor: "Vistior"
+    footer:
+      links: "Links"
+      copy_right: "Copyright © 2024. All Rights Reserved."
   hello: "Hello world"
