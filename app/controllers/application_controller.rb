@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    before_action :set_locale, :set_tags
+    before_action :set_locale, :set_tags, :get_banners
    
     def default_url_options
       { locale: I18n.locale }
@@ -27,4 +27,10 @@ class ApplicationController < ActionController::Base
        set_meta_tags site: t('global.site.title'),
                      description: t('global.site.description')
     end  
+
+    def get_banners
+      @banners = Admin::Banner.all
+      puts "hiiii"
+      puts @banners
+    end
 end

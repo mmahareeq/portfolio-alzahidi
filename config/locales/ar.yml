@@ -79,6 +79,8 @@ ar:
       post_created_successfully: "   تم انشاء المشنور بنجاح"
       created_at: "تاريخ الانشاء"
       created_by: "تم انشاؤه من قبل"
+      post_status: "حالة المنشور"
+      post_type: "نوع المنشور"
     admin:
       users: 
         all_users: "المستخدمين"

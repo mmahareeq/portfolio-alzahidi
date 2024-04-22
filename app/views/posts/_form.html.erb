@@ -10,11 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <p class="mark-required"><%=  t('global.post.required_fields_message')%></p>
   <div class="field mb-2">
     <%= form.label :title_ar ,class: "form-label" %>
     <span class="mark-required"> * </span>
-    <%= form.text_field :title_ar , class: "form-control"%>
+    <%= form.text_field :title_ar , class: "form-control", required: true%>
   </div>
   <div class="field mb-2">
     <%= form.label :title_en,class: "form-label" %>
@@ -23,7 +22,7 @@
   <div class="field mb-2">
     <%= form.label :content_ar, class: "form-label" %>
     <span class="mark-required"> * </span>
-    <%= form.rich_text_area :content_ar, class: "form-control" %>
+    <%= form.rich_text_area :content_ar, class: "form-control" , required: true%>
   </div>
   <%= form.hidden_field :post_type, value: @post_type %>
 
@@ -37,14 +36,14 @@
   <div class="field mb-2">
       <%= form.label :image, class: "form-label" %>
       <span class="mark-required"> * </span>
-      <%= form.file_field :image, class: "form-control" %>
+      <%= form.file_field :image, class: "form-control", required: true%>
   </div>
+  <p class="mark-required f-s"><%=  t('global.post.required_fields_message')%></p>
   <div>
-  <% if @post.persisted? %>
-    <%= form.submit t('global.post.edit_post'), class: "btn btn-primary btn-sm" %>
-  <% else %>
-    <%= form.submit t('global.post.create_post'), class: "btn btn-primary btn-sm" %>
-  <% end %>
-    
+    <% if @post.persisted? %>
+      <%= form.submit t('global.post.edit_post'), class: "btn btn-primary btn-sm" %>
+    <% else %>
+      <%= form.submit t('global.post.create_post'), class: "btn btn-primary btn-sm" %>
+    <% end %> 
   </div>
 <% end %>

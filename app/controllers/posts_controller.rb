@@ -10,13 +10,23 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    puts params
+    # @post_type= params[:post_type]
+   # @q = Post.ransack(params[:q])
     @post_type= params[:post_type]
+    @status = params[:status] || ''
+    # puts @q
+    @status_options = [["Published", "published"], ["Unpublished", "unpublished"]]
     if @post_type
       if(!user_signed_in? || (user_signed_in? && current_user.authority == 'visitor'))
         @posts = Post.where(post_type: @post_type, status: PUBLISHED)
+        # Post.where(post_type: @post_type, status: PUBLISHED)
         puts @posts
+        puts "hi"
       else
-        @posts = Post.where(post_type: @post_type)
+        @posts = Post.where(post_type: @post_type, status: @status)
+        # Post.where(post_type: @post_type)
+        puts @posts
       end
       set_meta_tags title: t("global.navbar.#{@post_type}")
     end

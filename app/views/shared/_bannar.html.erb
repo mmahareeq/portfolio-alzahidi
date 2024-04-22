@@ -1,17 +1,17 @@
-<div class="bannar d-flex">
-
-  <div class="container align-self-center">
-   <div class=" row">
-    <div class="col-5">
-        <span ><%= t("global.home.welcome_to_our_company") %></span>
-        <h1><%= t("global.home.technology_provider") %></h1>
-        <p> <%= t("global.home.goals_company")  %></p>
-        <%= link_to t("global.home.discover"), posts_path(post_type: "services"), method: "get", class:"btn btn-primary custom-height"%>
-    
-    </div>
-   
-   </div>
- 
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <% @banners.each_with_index do |banner, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>" >
+          <%= image_tag banner.image, alt: "Example Image", class: "d-block w-100"%>
+      </div>
+    <% end %>
   </div>
-  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root "posts#index"
@@ -19,8 +18,8 @@ Rails.application.routes.draw do
         member do
           patch :change_authority
         end
-
       end
+      resources :banners
     end
     get '/switch_locale', to: 'application#switch_locale', as: :switch_locale
   end

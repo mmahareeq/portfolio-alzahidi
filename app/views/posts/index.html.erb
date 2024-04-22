@@ -12,12 +12,26 @@
       <div class=" d-flex align-items-center flex-column mb-4">
       
       <h1 class="fs-2"> <%= @post_type? t("global.navbar.#@post_type") : t("global.navbar.home") %></h1>
-      <p class="fs-6"> <%= @post_type ? t("global.navbar.home")+" < " +  t("global.navbar.#@post_type") : nil  %></p>
+      <p class="fs-6">
+         <% if @post_type %>
+          <%= link_to(t('global.navbar.home'), posts_path ) %> - <%= link_to(t("global.navbar.#{@post_type}"), posts_path(post_type: @post_type)) %>
+        <% end %>    
+      
+       </p>
     
       <% if user_signed_in? && (current_user.authority == "admin" || current_user.authority == "staff" )%>
         <%= link_to t('global.post.create_post'), new_post_path(post_type: @post_type), method: "get", class: ""%>
       <% end %>
-
+    </div>
+    <div>
+      <%= form_with url: posts_path(post_type: @post_type), method: :get  do |f| %>
+        <%= f.label :status, "Status" %>
+        <%= f.select :status, options_for_select(@status_options), { include_blank: true }, class: "form-control" %>
+        <%= f.hidden_field :post_type, value: @post_type %>
+        
+        <%= f.submit "Search" %>
+      <% end %>
+  </div>
     </div>
     <div >
       <% if @posts.empty? %>

@@ -73,3 +73,5 @@ gem "rails-i18n"
 gem 'cancancan'
 
 gem 'meta-tags'
+
+gem 'ransack'

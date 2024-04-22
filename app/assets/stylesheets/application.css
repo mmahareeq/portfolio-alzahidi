@@ -14,21 +14,28 @@
  *= require_self
  */
   @import './actiontext.css';
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
   
   
  :root{
-    --primary-color: #0c407c;
-    --secondary-color: #e09936;
+    --primary-color: #006AA7;
+    --secondary-color: 	#FFCD00;
   }
   body {
     font-family: "Cairo", sans-serif;
+    color: var(--primary-color);
   }
   
   .header{
-    font-weight: 500;
+    /* font-weight: 00; */
   }
-  
+  .border-bottom-header{
+    border-bottom: 1px solid var(--secondary-color);
+  }
+  .navbar-light .navbar-nav .nav-link.active
+  {
+    color: var(--primary-color);
+    transition: color .15s ease-in-out,border-color .15s ease-in-out;
+  }
   .site-logo{
     height: 80px;
     width: 120px;
@@ -66,17 +73,13 @@
   .mt-7{
     margin-top: 7rem;
   }
-  
-  .bg-primary{
-    background-color: var(--primary-color);
-  }
-  
+
   .text-color{
     color: var(--secondary-color);
   }
   
   .footer{
-   
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     color: white;
