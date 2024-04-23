@@ -14,8 +14,8 @@ class PostsController < ApplicationController
     # @post_type= params[:post_type]
    # @q = Post.ransack(params[:q])
     @post_type= params[:post_type]
-    @status = params[:status] || ''
-    # puts @q
+    @status = params[:status] || [PUBLISHED, UNPUBLISHED]
+     puts @status
     @status_options = [["Published", "published"], ["Unpublished", "unpublished"]]
     if @post_type
       if(!user_signed_in? || (user_signed_in? && current_user.authority == 'visitor'))

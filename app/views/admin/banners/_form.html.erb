@@ -28,7 +28,9 @@
   <div>
    
   </div>
+  <p class="mark-required f-s"><%=  t('global.post.required_fields_message')%></p>
+
   <div>
-    <%= form.submit %>
+    <%= form.submit t('global.banner.new_banner') , class: "btn btn-primary btn-sm"%>
   </div>
 <% end %>

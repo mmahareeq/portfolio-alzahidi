@@ -1,20 +1,13 @@
-<div id="<%= dom_id banner %>">
-  <p>
-    <strong>Name:</strong>
-    <%= banner.name %>
-  </p>
+<div class="card post-card  border" id="<%= dom_id banner %>">
+  <% if banner && banner.image.attached? %>
+  <%= image_tag banner.image , alt: "cover_banner", style: "width: 100%; height: 250px;", class: "object-fit-cover"%>
+  <% end %>  
 
-  <p>
-    <strong>Link:</strong>
-    <%= banner.link %>
-  </p>
-  <div>
-
-    <% if banner.image.attached? %>
-      <%= image_tag banner.image , alt: "cover_post", style: "width: 100%; height: 30rem;"%>
-    <% end %> 
+  <div class="card-body p-2 h-100">
+    <h2 class="card-title fs-4"> <%= banner.name%></h2>
   </div>
 
 </div>
+
 
 

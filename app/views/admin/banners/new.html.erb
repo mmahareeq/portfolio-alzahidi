@@ -1,9 +1,13 @@
-<h1>New banner</h1>
+<div class="container"> 
 
-<%= render "form", admin_banner: @admin_banner %>
+  <div class="d-flex d-flex justify-content-between" >
+    <h1> <%= t("global.banner.new_banner") %>  </h1>
+    <%= link_to t("global.post.back_to_banners"), admin_banners_path ,class:"btn btn-outline-dark btn-sm custom-height align-self-center"%>
+  </div>
+  
+  <%= render "form", admin_banner: @admin_banner %>
 
-<br>
-
-<div>
-  <%= link_to "Back to banners", admin_banners_path %>
+  <br>
 </div>
+
+

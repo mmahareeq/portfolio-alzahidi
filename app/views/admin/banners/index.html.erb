@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Banners</h1>
+<div class="container"> 
+  <p style="color: green"><%= notice %></p>
+  <div class=" d-flex align-items-center flex-column mb-4">
+    <h1 class="fs-2">Banners</h1>
 
-<div id="admin_banners">
-  <% @admin_banners.each do |admin_banner| %>
-    <%= render admin_banner %>
-    <p>
-      <%= link_to "Show this banner", admin_banner %>
-    </p>
-  <% end %>
+    <%= link_to t('global.banner.create_banner'), new_admin_banner_path, method: "get", class: ""%>
+
+    <div id="admin_banners" class="d-flex align-items-stretch">
+      <% @admin_banners.each do |admin_banner| %>
+          <%= link_to admin_banner_path(admin_banner) , class: "col-3 me-2 text-decoration-none" do %>
+              <%= render admin_banner %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New banner", new_admin_banner_path %>

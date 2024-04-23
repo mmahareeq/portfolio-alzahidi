@@ -23,28 +23,34 @@
         <%= link_to t('global.post.create_post'), new_post_path(post_type: @post_type), method: "get", class: ""%>
       <% end %>
     </div>
-    <div>
-      <%= form_with url: posts_path(post_type: @post_type), method: :get  do |f| %>
-        <%= f.label :status, "Status" %>
-        <%= f.select :status, options_for_select(@status_options), { include_blank: true }, class: "form-control" %>
-        <%= f.hidden_field :post_type, value: @post_type %>
-        
-        <%= f.submit "Search" %>
-      <% end %>
-  </div>
-    </div>
     <div >
+      <%= form_with url: posts_path(post_type: @post_type), method: :get , class: "d-flex justify-content-between" do |f| %>
+        <div class=" d-flex flex-row">
+          <%= f.select :status, options_for_select(@status_options), prompt: 'Select Status', class: "form-control" %>
+          <%= f.hidden_field :post_type, value: @post_type %>
+        </div>
+      
+        <div class="">
+          <%= f.submit "Search", class: "btn btn-primary btn-sm" %>
+        </div>
+        
+      <% end %>
+    </div>
+    
+    </div>
+    <div class="container mt-2">
       <% if @posts.empty? %>
           <p class="text-center fs-4"> <%= t("global.post.no_#{@post_type}")  %> </p>
       <% else %>
           <% if @post_type == "contact_us" || @post_type == "about_us" %>
             <div class="d-flex justify-content-center">
-              <%= render @posts[@posts.length() -1] %>
+
+              <%= render "pages", post: @posts[@posts.length() -1] %>
             </div>
           <% else %> 
-            <div id="posts" class="d-flex align-items-stretch">
+            <div id="posts" class="d-flex  align-items-stretch">
               <% @posts.each do |post| %>
-                <%= link_to post_path(post) , class: "col-3 me-2 text-decoration-none" do %>
+                <%= link_to post_path(post) , class: "col-3 text-decoration-none" do %>
                   <%= render post %>
                 <% end %>
               <% end %>
