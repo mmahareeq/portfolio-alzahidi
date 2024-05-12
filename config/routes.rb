@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         end
       end
       resources :banners
+
+      resources :dashboard
     end
     get '/switch_locale', to: 'application#switch_locale', as: :switch_locale
   end
