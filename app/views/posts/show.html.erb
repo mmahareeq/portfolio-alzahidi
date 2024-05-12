@@ -25,10 +25,8 @@
     <p class="text-card"><%= @post.content_ar %></p>
   <% end %> 
   <hr>
-  <% if user_signed_in? && (current_user.authority == "admin" || current_user.authority == "staff" )%>
-    <p><%= t ("global.post.created_by") %> : <%= @post.user.email%> </p>
-    <p><%= t ("global.post.created_at") %>  :<%=@post.created_at.strftime('%m/%d/%Y')%></p>
-
+  <% if user_signed_in? && (current_user.authority != "visitor")%>
+    
     <table class="table">
       <tr>
         <th><%= t ("global.post.created_by") %></th>
@@ -52,7 +50,27 @@
         <%= button_to t('global.post.unpublish_this_post'), change_status_post_path(id: @post.id, status: "unpublished"), method: "patch",  class: "btn btn-success"%> |
       <% end %>
       <%= link_to t('global.post.edit'), edit_post_path(id: @post.id, post_type: @post.post_type), method: "get" , class: "btn btn-primary btn-sm me-2" %> |
-      <%= button_to t('global.post.delete'), @post, method: "delete", data: {turbo_confirm: 'Are you sure? '}, class: "btn btn-danger btn-sm" %>
-    </div>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <%= t('global.post.delete') %>
+      </button>
+      </div>
   <% end %>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= button_to t('global.post.delete'), @post, method: "delete", class: "btn btn-danger btn-sm" %>
+      </div>
+    </div>
+  </div>
 </div>

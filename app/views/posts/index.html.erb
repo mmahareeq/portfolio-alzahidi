@@ -28,9 +28,6 @@
         <div class=" d-flex flex-row">
           <%= f.select :status, options_for_select(@status_options), prompt: 'Select Status', class: "form-control" %>
           <%= f.hidden_field :post_type, value: @post_type %>
-        </div>
-      
-        <div class="">
           <%= f.submit "Search", class: "btn btn-primary btn-sm" %>
         </div>
         

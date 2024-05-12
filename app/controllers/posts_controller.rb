@@ -12,21 +12,21 @@ class PostsController < ApplicationController
   def index
     puts params
     # @post_type= params[:post_type]
-   # @q = Post.ransack(params[:q])
+    # @q = Post.ransack(params[:q])
     @post_type= params[:post_type]
-    @status = params[:status] || [PUBLISHED, UNPUBLISHED]
-     puts @status
-    @status_options = [["Published", "published"], ["Unpublished", "unpublished"]]
+
+    if(params[:status].present? )
+      @status = params[:status ]
+    else
+      @status = [PUBLISHED, UNPUBLISHED]
+    end
+
+    @status_options = [["All", ""], ["Published", "published"], ["Unpublished", "unpublished"]]
     if @post_type
       if(!user_signed_in? || (user_signed_in? && current_user.authority == 'visitor'))
         @posts = Post.where(post_type: @post_type, status: PUBLISHED)
-        # Post.where(post_type: @post_type, status: PUBLISHED)
-        puts @posts
-        puts "hi"
       else
         @posts = Post.where(post_type: @post_type, status: @status)
-        # Post.where(post_type: @post_type)
-        puts @posts
       end
       set_meta_tags title: t("global.navbar.#{@post_type}")
     end
