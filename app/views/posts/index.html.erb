@@ -12,27 +12,28 @@
       <div class=" d-flex align-items-center flex-column mb-4">
       
       <h1 class="fs-2"> <%= @post_type? t("global.navbar.#@post_type") : t("global.navbar.home") %></h1>
-      <p class="fs-6">
-         <% if @post_type %>
-          <%= link_to(t('global.navbar.home'), posts_path ) %> - <%= link_to(t("global.navbar.#{@post_type}"), posts_path(post_type: @post_type)) %>
+        <% if @post_type %>
+          <p class="fs-6">
+            <%= link_to(t('global.navbar.home'), posts_path ) %> - <%= link_to(t("global.navbar.#{@post_type}"), posts_path(post_type: @post_type)) %>
+          </p>
         <% end %>    
       
-       </p>
-    
-      <% if user_signed_in? && (current_user.authority == "admin" || current_user.authority == "staff" )%>
+      <% if user_signed_in? && (current_user.authority != "visitor")%>
         <%= link_to t('global.post.create_post'), new_post_path(post_type: @post_type), method: "get", class: ""%>
+
+        <div class="d-flex align-items-start w-100">
+        <%= form_with url: posts_path(post_type: @post_type), method: :get , class: "d-flex justify-content-between" do |f| %>
+          <div class=" d-flex flex-row">
+            <%= f.select :status, options_for_select(@status_options), prompt: t('global.post.select_status'), class: "form-control" %>
+            <%= f.hidden_field :post_type, value: @post_type %>
+            <%= f.submit t('global.post.search'), class: "btn btn-primary btn-sm me-1" %>
+          </div>
+          
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <div >
-      <%= form_with url: posts_path(post_type: @post_type), method: :get , class: "d-flex justify-content-between" do |f| %>
-        <div class=" d-flex flex-row">
-          <%= f.select :status, options_for_select(@status_options), prompt: 'Select Status', class: "form-control" %>
-          <%= f.hidden_field :post_type, value: @post_type %>
-          <%= f.submit "Search", class: "btn btn-primary btn-sm" %>
-        </div>
-        
-      <% end %>
-    </div>
+
     
     </div>
     <div class="container mt-2">

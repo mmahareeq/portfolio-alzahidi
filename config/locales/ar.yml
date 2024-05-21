@@ -81,6 +81,9 @@ ar:
       created_by: "تم انشاؤه من قبل"
       post_status: "حالة المنشور"
       post_type: "نوع المنشور"
+      search: "بحث"
+      select_status: "اختر حالة المنشور"
+
     admin:
       users: 
         all_users: "المستخدمين"

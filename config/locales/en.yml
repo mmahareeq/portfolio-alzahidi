@@ -75,6 +75,8 @@ en:
       post_created_successfully: "Post was successfully created."
       created_at: " Created at"
       created_by: " Created by"
+      search: "Search"
+      select_status: "Select Status"
     admin:
       users: 
         all_users: "All users"
