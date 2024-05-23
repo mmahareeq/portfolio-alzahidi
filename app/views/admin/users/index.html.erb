@@ -35,4 +35,8 @@
       <% end %>
     </tbody>
   </table>
+  <div class="paginate">
+    <%= will_paginate @users, :container => false %>
+  </div>
+  
 </div>

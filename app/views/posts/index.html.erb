@@ -1,72 +1,61 @@
 
 <% if notice %>
   <div class="notice alert alert-success mt-2 lert-dismissible fade show d-flex justify-content-between" role="alert">
-  <%= notice %>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
 
 
 <% if @post_type.present? %>
   <div class="container">
-      <div class=" d-flex align-items-center flex-column mb-4">
-      
+    <div class=" d-flex align-items-center flex-column mb-4">
+    
       <h1 class="fs-2"> <%= @post_type? t("global.navbar.#@post_type") : t("global.navbar.home") %></h1>
-        <% if @post_type %>
-          <p class="fs-6">
-            <%= link_to(t('global.navbar.home'), posts_path ) %> - <%= link_to(t("global.navbar.#{@post_type}"), posts_path(post_type: @post_type)) %>
-          </p>
-        <% end %>    
-      
-      <% if user_signed_in? && (current_user.authority != "visitor")%>
+      <% if @post_type %>
+        <p class="fs-6">
+          <%= link_to(t('global.navbar.home'), posts_path ) %> - <%= link_to(t("global.navbar.#{@post_type}"), posts_path(post_type: @post_type)) %>
+        </p>
+      <% end %>    
+    
+      <% if user_signed_in? && (current_user.authority != "visitor") && @post_type != "contact_us" && @post_type != "about_us" %>
         <%= link_to t('global.post.create_post'), new_post_path(post_type: @post_type), method: "get", class: ""%>
 
         <div class="d-flex align-items-start w-100">
-        <%= form_with url: posts_path(post_type: @post_type), method: :get , class: "d-flex justify-content-between" do |f| %>
-          <div class=" d-flex flex-row">
-            <%= f.select :status, options_for_select(@status_options), prompt: t('global.post.select_status'), class: "form-control" %>
-            <%= f.hidden_field :post_type, value: @post_type %>
-            <%= f.submit t('global.post.search'), class: "btn btn-primary btn-sm me-1" %>
-          </div>
-          
-        <% end %>
-      </div>
-      <% end %>
-    </div>
-
-    
-    </div>
-    <div class="container mt-2">
-      <% if @posts.empty? %>
-          <p class="text-center fs-4"> <%= t("global.post.no_#{@post_type}")  %> </p>
-      <% else %>
-          <% if @post_type == "contact_us" || @post_type == "about_us" %>
-            <div class="d-flex justify-content-center">
-
-              <%= render "pages", post: @posts[@posts.length() -1] %>
-            </div>
-          <% else %> 
-            <div id="posts" class="d-flex  align-items-stretch">
-              <% @posts.each do |post| %>
-                <%= link_to post_path(post) , class: "col-3 text-decoration-none" do %>
-                  <%= render post %>
-                <% end %>
-              <% end %>
-            </div>
+          <%= form_with url: posts_path(post_type: @post_type), method: :get , class: "d-flex justify-content-between" do |f| %>
+            <div class=" d-flex flex-row">
+              <%= f.select :status, options_for_select(@status_options), prompt: t('global.post.select_status'), class: "form-control" %>
+              <%= f.hidden_field :post_type, value: @post_type %>
+              <%= f.submit t('global.post.search'), class: "btn btn-primary btn-sm me-1" %>
+            </div> 
           <% end %>
+        </div>
       <% end %>
-    </div>
-      
-  
-  
+      </div>
   </div>
+  <div class="container mt-2">
+    <% if @posts.empty? %>
+        <p class="text-center fs-4"> <%= t("global.post.no_#{@post_type}")  %> </p>
+    <% else %>
+      <% if @post_type == "contact_us" || @post_type == "about_us" %>
+        <div class="d-flex justify-content-center">
+          <%= render "pages", post: @posts[@posts.length() -1] %>
+        </div>
+      <% else %> 
+        <div id="posts" class="d-flex  align-items-stretch">
+          <% @posts.each do |post| %>
+            <%= link_to post_path(post) , class: "col-3 text-decoration-none" do %>
+              <%= render post %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
   
 <% else %> 
-<%= render partial: "home" %>
-
- 
-
-
+  <%= render partial: "home" %>
 <% end %> 
 
 

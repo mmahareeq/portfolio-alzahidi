@@ -11,4 +11,10 @@
     <%= button_to 'Bannar list', admin_banners_path , method: "get" , class: "btn btn-primary btn-sm m-2"%>
 
   </div>
+
+  <div>
+    <p>Contact us</p>
+    <%= link_to 'contact us', url_for(controller: '/posts', action: 'index', post_type: "contact_us") , method: "get", class:"btn btn-primary custom-height "%>
+
+  </div>
 </div>

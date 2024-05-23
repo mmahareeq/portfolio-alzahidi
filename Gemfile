@@ -75,3 +75,5 @@ gem 'cancancan'
 gem 'meta-tags'
 
 gem 'ransack'
+
+gem 'will_paginate'

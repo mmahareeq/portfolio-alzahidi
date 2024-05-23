@@ -1,5 +1,5 @@
 
-<div >
+<div class="container">
   <div class="d-flex d-flex justify-content-between" >
     <h1 class="fs-2 mb-3"><%= t("global.post.edit_#{@post.post_type}")%></h1>
     <%= link_to t("global.post.back_to_posts"), posts_path(post_type: @post.post_type), method: "get" ,class:"btn btn-outline-dark btn-sm custom-height align-self-center"%>

@@ -137,3 +137,11 @@
   .a-footer{
     color: #ffffff;
   }
+  
+  .paginate{
+    background: #f1f1f1;
+    border: 1px solid #535151;
+    text-align: center;
+    padding: 1em;
+    cursor: default;
+  }

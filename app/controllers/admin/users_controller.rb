@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
     load_and_authorize_resource
 
     def index 
-      @users = User.all
+      @users = User.paginate(page: params[:page], per_page:1)   
     end
     
     def change_authority
